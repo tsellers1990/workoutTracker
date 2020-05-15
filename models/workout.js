@@ -3,18 +3,31 @@ const mongoose = require("mongoose"); ////We're using this when we want to add a
 const Schema = mongoose.Schema;
 
 const workoutSchema = new Schema({
+    type: {
+        type: String,
+        trim: true,
+        default: "resistance"
+    },
     name: {
         type: String,
         trim: true,
-        default: "Other"
+        default: "squats"
     },
     duration: {
         type: Number,
-        required: "Enter a duration of time"
+        default: 10
     },
-    date: {
-        type: Date,
-        default: Date.now
+    weight: {
+        type: Number,
+        default: 225
+    },
+    reps: {
+        type: Number,
+        default: 2
+    },
+    sets: {
+        type: Number,
+        default: 5
     }
 });
 
