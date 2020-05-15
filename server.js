@@ -19,26 +19,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", ////t
     {useNewUrlParser: true});
 
 app.use(require("./routes/api-routes"))
-
-app.get("/stats", (req, res) => {
-    db.Workout.find({})
-    .then(dbWorkouts => {
-        res.json(dbWorkouts);
-    })
-    .catch(err => {
-        res.json(err);
-    })
-});
-
-app.get("/exercise", (req, res) => {
-    db.Workout.find({})
-    .then(dbWorkouts => {
-        res.json(dbWorkouts)
-    })
-    .catch(err => {
-        res.json(err)
-    })
-})
+app.use(require("./routes/html-routes.js"))
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`)
