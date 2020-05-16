@@ -2,33 +2,40 @@ const mongoose = require("mongoose"); ////We're using this when we want to add a
 
 const Schema = mongoose.Schema;
 
+
+var day = new Date().setDate(new Date().getDate()-10)
+
 const workoutSchema = new Schema({
-    type: {
-        type: String,
-        trim: true,
-        default: "resistance"
-    },
-    name: {
-        type: String,
-        trim: true,
-        default: "squats"
-    },
-    duration: {
-        type: Number,
-        default: 10
-    },
-    weight: {
-        type: Number,
-        default: 225
-    },
-    reps: {
-        type: Number,
-        default: 2
-    },
-    sets: {
-        type: Number,
-        default: 5
-    }
+
+    day : Date,
+    
+    exercises: [{
+        type: {
+            type: String,
+            trim: true,
+            default: "resistance"
+        },
+        name: {
+            type: String,
+            trim: true,
+            default: "squats"
+        },
+        duration: {
+            type: Number,
+            default: 10
+        },
+        weight: {
+            type: Number,
+            default: 225
+        },
+        reps: {
+            type: Number,
+            default: 2
+        },
+        sets: {
+            type: Number,
+            default: 5
+        }}]
 });
 
 const Workout = mongoose.model("Workout", workoutSchema);
